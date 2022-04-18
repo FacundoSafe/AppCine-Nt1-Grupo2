@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Cine_NT1_Grupo2.Models.Funcion>
+
+@{
+    ViewData["Title"] = "Inicio de funcion";
+}
+
+<h1>Funciones Disponibles</h1>
+
+<p>
+    @if (User.IsInRole(nameof(Rol.ADMIN))) // solo permite que el usuario ADMINSTRADOR tenga acceso a loc omandos de Funcion
+    {
+        <a asp-action="Create">Agregar Nueva Función</a>
+
+    }
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sala)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pelicula)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sala)
+                </td>
+                <td>
+                    @* Aca deberia verse el nombre, use un include en el controller para obtener los datos faltantes*@
+                    @Html.DisplayFor(modelItem => item.Pelicula.Nombre)
+                </td>
+
+                @*Por algun motivo no me permite agregar una barrita entre lo que esta afuera y dentro del if *@
+                @if (User.IsInRole(nameof(Rol.ADMIN))) // solo permite que el usuario ADMINSTRADOR tenga acceso a loc omandos de Funcion
+                {
+                    <td>
+                        <a class="btn btn-light" role="button" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                        <a class="btn btn-light" role="button" asp-action="Details" asp-route-id="@item.Id">Ver Mas</a> |
+                        <a class="btn btn-danger" role="button" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a class="btn btn-primary" role="button" asp-action="Details" asp-route-id="@item.Id">Ver Mas</a>
+                    </td>
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿@model Cine_NT1_Grupo2.Models.Entrada
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Seguro deseas eliminar esta Entrada?</h3>
+<div>
+    <h4>Entrada</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="EntradaId" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver</a>
+    </form>
+</div>

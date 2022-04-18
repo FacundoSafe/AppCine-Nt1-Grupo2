@@ -1,0 +1,63 @@
+﻿@model Cine_NT1_Grupo2.Models.Entrada
+
+@{
+    ViewData["Title"] = "Detalles de entrada";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Entrada</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Funcion.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Funcion.Fecha)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Funcion.Pelicula.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Funcion.Pelicula.Nombre)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Asiento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Asiento.Fila)@Html.DisplayFor(modelItem => Model.Asiento.Numero)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Funcion.Pelicula.Calificacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Funcion.Pelicula.Calificacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Funcion.Pelicula.Genero)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Funcion.Pelicula.Genero)
+        </dd>
+    </dl>
+    @{
+        var imagenPath = Url.Content("~/imagenes/" + Model.Funcion.Pelicula.Id + ".jpg");
+
+    }
+
+
+    <img src="@imagenPath" alt="@Model.Funcion.Pelicula.Nombre" height="300">
+
+
+
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.EntradaId">Editar</a> |
+    <a asp-action="Index">Volver</a>
+</div>

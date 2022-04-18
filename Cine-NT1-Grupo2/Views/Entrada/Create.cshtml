@@ -1,0 +1,39 @@
+﻿@model Cine_NT1_Grupo2.Models.Entrada
+
+@{
+    ViewData["Title"] = "Crear entrada";
+}
+
+<h1>Crear</h1>
+
+<h4>Entrada</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+        <p>Selecciona la pelicula</p>
+
+        <form asp-action="SelectFecha">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @*Html.DropDownListFor(m => m.Funcion, new SelectList(ViewBag.Funciones, "Value", "Text"))*@
+
+
+            @Html.DropDownList("IdPelicula", ViewBag.FuncionesPelis as SelectList)
+         
+
+        <div class="form-group">
+            <br />
+            <input type="submit" value="Aceptar" class="btn btn-primary" />
+        </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

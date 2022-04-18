@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Prado Diessler Federico Werner Nahuel- Safe Facundo Nadir- Toppino Mariano Ariel">
+    <meta name="Keywords" content="CINE, Peliculas, online, entradas, estrenos, promociones">
+    <title>@ViewData["Title"] - Bienvenido a CINEMA-ORT </title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow mb-3 navbar-dark">
+            <div class="container">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                 Cinema-ORT</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="nav nav-pills flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+
+
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+
+                            
+                            //esto es lo que puede ver el USUARIO AUTENTICADO EN EL NAV
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Entrada" asp-action="Index">Entrada</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Cliente" asp-action="Index">Cliente</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Funcion" asp-action="Index">Funciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Pelicula" asp-action="Index">Cartelera</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="Tarjeta" asp-action="Index">Medio De Pago</a>
+                            </li>
+
+                           
+                        }
+                       
+                    </ul>
+                </div>
+            </div>
+            <div class="loginNavBar flex-row-reverse">
+                
+                <ul class="nav nav-pills">
+                    @if (!User.Identity.IsAuthenticated)
+                    {   
+                        <li class="nav-item float-right">
+                            <a class="nav-link active" asp-area="" asp-controller="Cliente" asp-action="Loguearse">Iniciar Sesión</a>
+                        </li>
+                    }
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item float-right">
+                            <p class="nav-link text-white" asp-area="">Bienvenido @User.FindFirstValue(ClaimTypes.GivenName)!</p>
+                        </li>
+
+                        <li class="nav-item">
+                            <form asp-controller="Cliente" asp-action="Desloguearse">
+                                <button type="submit" class="nav-link alert-danger">Cerrar Sesión</button>
+                            </form>
+                        </li>
+                    }
+                </ul>
+                
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            <div>
+                @*
+            <h4>
+                Contacto
+            </h4>
+            <p>
+                (011) 4561-1654 <br />
+                (011) 4324-4324<br />
+                AtencionClientes@cinema-ort.com<br />
+
+            </p>
+
+        </div>
+
+        <div>
+            <p> ¡Seguinos en nuestras redes sociales! </p>
+            <ul>
+                <li> <a href="https://www.facebook.com/%27%3E/"><"Facebook">  </a> </li>
+                <li> <a href="https://www.instagram.com/%22%3E/"><"instagram"> </a> </li>
+                <li> <a href="https://twitter.com/%22%3E/"><"twitter">  </a> </li>
+            </ul>
+                *@
+            </div>
+            &copy; 2021 - CinemaORT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Politica de Privacidad</a>
+        </div>
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,57 @@
+﻿@model Cine_NT1_Grupo2.Models.Funcion
+
+@{
+    ViewData["Title"] = "Creacion de funcion";
+}
+
+<h1>Crear Funcion</h1>
+
+<h4>Funcion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                @*  El primer parametro es el value que vamos a devolver para que la BD
+                    sepa que guardar y el segundo es la lista con los seleccionables. Los cuales previamente tienen 
+                    un valor.
+                    Cuestiones IMPORTANTES: el nombre que le pasemos como primer parametro es lo que luego 
+                    a recibir la accion. Es por esto que si aqui lo llamamos IdPelicula y luego lo enviamos
+                    y en el parametro de la accion se llama simplemente Id no lo reconocera.
+                    por ende tanto aqui, como en el parametro del metodo deben llamarse Igual!
+                    *@
+                @Html.DropDownList("IdPelicula", ViewBag.FuncionesPelis as SelectList)
+
+
+                @*
+                @Html.DropDownListFor(o => o.Pelicula,
+        new SelectList(ViewBag.FuncionesPelis, "Id", "Nombre"))
+                *@
+            </div>
+                        <div class="form-group">
+
+                            <label asp-for="Fecha" class="control-label"></label>
+                            <input asp-for="Fecha" class="form-control" />
+                            <span asp-validation-for="Fecha" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Sala" class="control-label"></label>
+                            <input asp-for="Sala" class="form-control" />
+                            <span asp-validation-for="Sala" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Crear" class="btn btn-primary" />
+                        </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Volver</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }

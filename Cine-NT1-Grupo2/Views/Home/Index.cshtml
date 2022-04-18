@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Cine_NT1_Grupo2.Models.Pelicula>
+
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+@if (TempData["MensajeHome"] != null)
+{
+    <script>
+
+            window.onload = function () {
+                alert("@TempData["MensajeHome"]");
+            };
+
+    </script>
+}
+
+
+
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="jumbotron text-center">
+        <h1>Registrate para disfrutar del mejor contenido!</h1>
+        <div>
+            <a class="btn btn-dark" role="button" asp-controller="Cliente" asp-action="Registrarse">Registrarse</a>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+<div class="cartelera-container">
+
+    <div class="text-center">
+        <h1 class="display-4">Nuestras Funciones</h1>
+    </div>
+
+    <div class="grid-container">
+
+        @foreach (var item in Model)
+        {
+            <div class="grid-item ">
+
+                @{
+                    var imagenPath = Url.Content("~/imagenes/" + item.Id + ".jpg");
+
+                }
+
+                @*https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/anchor-tag-helper?view=aspnetcore-6.0
+                    asp route-id*@
+                <a asp-area="" asp-controller="Pelicula" asp-action="Details" asp-route-id="@item.Id">
+                    <img src="@imagenPath" alt="@item.Nombre" height="225" width="150">
+                </a>
+                <div>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

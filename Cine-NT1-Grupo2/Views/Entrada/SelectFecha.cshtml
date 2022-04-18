@@ -1,0 +1,75 @@
+﻿@model Cine_NT1_Grupo2.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Seleccion de funcion";
+}
+
+<h1>Seleccion de funcion</h1>
+
+<h4>Entrada</h4>
+<hr />
+
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Calificacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Calificacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genero)
+        </dd>
+    </dl>
+    @{
+        var imagenPath = Url.Content("~/imagenes/" + Model.Id + ".jpg");
+
+    }
+
+
+    <img src="@imagenPath" alt="@Model.Nombre" height="300">
+</div>
+
+
+<div class="row">
+    <div class="col-md-4">
+        
+        <p>Selecciona tu funcion </p>
+
+        <form asp-action="SelectAsiento">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @*Html.DropDownListFor(m => m.Funcion, new SelectList(ViewBag.Funciones, "Value", "Text"))*@
+
+
+            @Html.DropDownList("IdFuncion", ViewBag.FechasPelis as SelectList)
+          
+
+        <div class="form-group">
+            <br />
+            <input type="submit" value="Aceptar" class="btn btn-primary" />
+        </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Volver al inicio</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

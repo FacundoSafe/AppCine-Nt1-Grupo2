@@ -1,0 +1,48 @@
+﻿@model Cine_NT1_Grupo2.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Editar pelicula";
+}
+
+<h1>Edición</h1>
+
+<h4>Película</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Calificacion" class="control-label"></label>
+                <select asp-for="Calificacion" class="form-control" asp-items="Html.GetEnumSelectList<Calificacion>()">
+                    <option selected="selected" value="">Por favor ingrese la calificación</option>
+                </select>
+                <span asp-validation-for="Calificacion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label"></label>
+                <select asp-for="Genero" class="form-control" asp-items="Html.GetEnumSelectList<Genero>()">
+                    <option selected="selected" value="">Por favor ingrese el genero</option>
+                </select>
+                <span asp-validation-for="Genero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

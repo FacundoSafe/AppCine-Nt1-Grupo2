@@ -1,0 +1,42 @@
+﻿@model Cine_NT1_Grupo2.Models.Funcion
+
+@{
+    ViewData["Title"] = "Eliminar funcion";
+}
+
+<h1>Eliminar funcion</h1>
+
+<h3>¿Estas seguro de borrar esta funcion?</h3>
+<div>
+    <h4>Funcion</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sala)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sala)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pelicula)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pelicula.Nombre)
+        </dd>
+
+
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Volver</a>
+    </form>
+</div>

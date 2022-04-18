@@ -1,0 +1,64 @@
+﻿@model Cine_NT1_Grupo2.Models.Pelicula
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Película</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Calificacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Calificacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Genero)
+        </dd>
+    </dl>
+</div>
+
+
+@*  https://docs.microsoft.com/en-us/aspnet/web-pages/overview/getting-started/introducing-razor-syntax-c
+    https://www.c-sharpcorner.com/UploadFile/abhikumarvatsa/html-helper-for-image-html-image-developing-extension-in/*@
+
+@*Puntualmente no entiendo porque no funciono el virtual path . use esta consulta de stack overflow
+    https://stackoverflow.com/questions/7017970/problem-with-displaying-images-in-mvc-with-a-virtual-directory-configured
+    https://stackoverflow.com/questions/3391510/asp-mvc-friendly-urls-and-relative-path-images*@
+@{
+    var imagenPath = Url.Content("~/imagenes/" + Model.Id + ".jpg");
+
+}
+
+
+<img src="@imagenPath" alt="@Model.Nombre" height="300">
+
+
+@if (User.IsInRole(nameof(Rol.ADMIN)))
+{
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Editar pelicula</a> |
+        <a asp-action="Index">Volver</a>
+    </div>
+
+}
+else
+{
+    <div>
+        <a asp-action="Index">Volver</a>
+    </div>
+}
+

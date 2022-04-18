@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Cine_NT1_Grupo2.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (TempData["MensajeCliente"] != null)
+{
+    <script>
+
+            window.onload = function () {
+                alert("@TempData["MensajeCliente"]");
+            };
+
+    </script>
+}
+
+
+@if (User.IsInRole(nameof(Rol.ADMIN))) // solo permite que el usuario ADMINSTRADOR tenga acceso a loc omandos de Funcion
+{
+    <h1>Clientes Registrados</h1>
+    <p>
+        <a asp-action="Registrarse">Registrar Usuario</a>
+    </p>
+}
+else
+{
+    <h1>Datos de tu cuenta</h1>
+    <p>
+        <form asp-controller="Cliente" asp-action="DarseBaja">
+
+            <button type="submit" class="nav-link text-danger">Eliminar mi cuenta</button>
+        </form>
+    </p>
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mail)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mail)
+                </td>
+
+
+                @if (User.IsInRole(nameof(Rol.ADMIN)))
+                {
+                    <td>
+                        <a class="btn btn-light" role="button" asp-action="Edit" asp-route-id="@item.id">Editar</a> |
+                        <a class="btn btn-light" role="button" asp-action="Details" asp-route-id="@item.id">Ver Mas</a> |
+                        <a class="btn btn-danger" role="button" asp-action="Delete" asp-route-id="@item.id">Eliminar</a>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <a class="btn btn-secondary" role="button" asp-action="Details" asp-route-id="@item.id"> Ver/Cambiar mis Datos</a>
+                    </td>
+                }
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>

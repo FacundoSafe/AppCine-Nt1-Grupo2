@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cine-NT1-Grupo2", "Cine-NT1-Grupo2\Cine-NT1-Grupo2.csproj", "{0A7155DF-567D-49CF-9C7F-31D4B29FAA7D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A7155DF-567D-49CF-9C7F-31D4B29FAA7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7155DF-567D-49CF-9C7F-31D4B29FAA7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7155DF-567D-49CF-9C7F-31D4B29FAA7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7155DF-567D-49CF-9C7F-31D4B29FAA7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {506548E4-80A9-428A-9DE9-B0238B084B88}
+	EndGlobalSection
+EndGlobal

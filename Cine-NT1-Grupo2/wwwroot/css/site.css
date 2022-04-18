@@ -1,0 +1,176 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+nav {
+    background-color: black;
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+
+}
+
+a.navbar n{
+    color:white !important;
+    background-color:darkblue;
+}
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: white;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+ }
+
+
+
+
+
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+    
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    /*https://stackoverflow.com/questions/4997493/set-opacity-of-background-image-without-affecting-child-elements*/
+    /*background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(/imagenes/fondo.png);*/
+    background-image: url(/imagenes/fondo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /*Se modifica la font */
+    font-family: 'Bakbak One', cursive !important;
+}
+
+   
+
+.footer {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 15px; /* Vertically center the text there */
+}
+
+/* como usar grid... 
+    https://www.w3schools.com/css/css_grid.asp
+*/
+
+
+.cartelera-container {
+    background-color: #e9ecef;
+}
+
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+    border-radius: 5px;
+    padding: 10px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+ /* Esto del media debe ir despues del original porque sino se sobrescribe aparentemente*/
+@media (max-width: 600px) {
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto;
+        border-radius: 5px;
+        padding: 10px;
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+}
+
+.grid-item {
+     
+    padding: 20px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.grid-containerAsientos {
+    display: grid;
+    grid-template-columns: auto auto;
+   
+    padding: 10px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.grid-itemAsiento {
+   
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 1em;
+    text-align: left;
+    padding: 20px;
+}
+.loginNavBar {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (min-width: 576px)  {
+
+    .loginNavBar {
+        max-width: 540px;
+    }
+    
+}

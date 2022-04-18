@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Cine_NT1_Grupo2.Models.Entrada>
+
+@{
+    ViewData["Title"] = "Inicio";
+}
+@if (User.IsInRole(nameof(Rol.ADMIN))) //titulos diferenciales
+{
+
+    <h1>Entradas Totales</h1>
+}
+else
+{
+    <h1>Tus Entradas Disponibles</h1>
+}
+
+@if (TempData["Mensaje"] != null)
+{
+<script>
+
+            window.onload = function () {
+                alert("@TempData["Mensaje"]");
+            };
+
+</script>
+}
+
+
+<p>
+    <a asp-action="Create">Nueva Entrada</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Asiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion.Fecha)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Funcion.Sala)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcion.Pelicula.Nombre)
+                </td>
+                <td>
+                    @*Esto funciono podemos poner ambas*@
+                    @Html.DisplayFor(modelItem => item.Asiento.Fila)@Html.DisplayFor(modelItem => item.Asiento.Numero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcion.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Funcion.Sala)
+                </td>
+
+                <td>
+                    <a class="btn btn-light" role="button" asp-action="Details" asp-route-id="@item.EntradaId">Ver Mas</a> |
+                    <a class="btn btn-danger" role="button" asp-action="Delete" asp-route-id="@item.EntradaId">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
